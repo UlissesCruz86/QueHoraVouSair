@@ -30,14 +30,6 @@ public class HelloController {
             LocalTime compensacao = LocalTime.of(Integer.parseInt(tfQtdHorasCompensar.getText().substring(0, 2)), Integer.parseInt(tfQtdHorasCompensar.getText().substring(2, 4)));
 
 
-            System.out.println(padrao);
-            System.out.println(entrada);
-            System.out.println(intervalo);
-            System.out.println(retorno);
-            System.out.println(extra);
-            System.out.println(compensacao);
-
-
             LocalTime total = padrao.plusHours(entrada.getHour()).plusMinutes(entrada.getMinute());
 
             LocalTime almoco = retorno.minusHours(intervalo.getHour()).minusMinutes(intervalo.getMinute());
@@ -52,16 +44,12 @@ public class HelloController {
             if(sExtra.equals("00:00") && sCompensacao.equals("00:00")){
 
                 resultado.setText(saida.toString());
-                System.out.println(saida.toString());
 
             }
 
             else if(sExtra.equals("00:00") && sCompensacao != "00:00"){
 
                 LocalTime compensar = saida.plusHours(compensacao.getHour()).plusMinutes(compensacao.getMinute());
-                System.out.println(saida);
-                System.out.println(compensacao);
-                System.out.println(compensar);
                 resultado.setText(compensar.toString());
 
             }
@@ -69,9 +57,6 @@ public class HelloController {
             else {
 
                 LocalTime horaExtra = saida.minusHours(extra.getHour()).minusMinutes(extra.getMinute());
-                System.out.println(saida);
-                System.out.println(extra);
-                System.out.println(horaExtra);
                 resultado.setText(horaExtra.toString());
 
             }
