@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<VBox alignment="TOP_LEFT" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.quehoravousair.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <AnchorPane id="ArchoPane" prefHeight="387.0" prefWidth="489.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+        <children>
+            <Label text="Qtd. de horas diárias padrão: 08:00" layoutX="0" layoutY="3"/>
+            <Label text="Entrada: " layoutX="0" layoutY="47"/>
+            <TextField fx:id="tfEntrada" maxWidth="50" layoutX="50" layoutY="44" text="0000"/>
+            <Label text="Intervalo: " layoutX="0" layoutY="94"/>
+            <TextField fx:id="tfIntervalo" maxWidth="50" layoutX="55" layoutY="91" text="0000"/>
+            <Label text="Retorno: " layoutX="0" layoutY="138"/>
+            <TextField fx:id="tfRetorno" maxWidth="50" layoutX="51" layoutY="135" text="0000"/>
+            <Label text="Qtd Horas Extras: " layoutX="0" layoutY="185"/>
+            <TextField fx:id="tfQtdHorasExtras" maxWidth="50" layoutX="97" layoutY="181" text="0000"/>
+            <Label text="Qtd Horas à Compensar: " layoutX="0" layoutY="228"/>
+            <TextField fx:id="tfQtdHorasCompensar" maxWidth="50" layoutX="135" layoutY="225" text="0000"/>
+            <Label text="Sua saída será: " layoutX="0" layoutY="268" style="-fx-font-size: 16px"/>
+            <Label fx:id="resultado" style="-fx-font-weight: bold; -fx-font-size: 16px" layoutX="106" layoutY="268"/>
+            <Label text="Digite somente os números" style="-fx-font-weight: bold" layoutX="0" layoutY="300"/>
+        </children>
+    </AnchorPane>
+    <Button text="Resultado" onAction="#onHelloButtonClick"/>
+</VBox>
