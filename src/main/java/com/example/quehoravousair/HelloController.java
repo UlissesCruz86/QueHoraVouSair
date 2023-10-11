@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 import java.time.LocalTime;
 
 public class HelloController {
+
     @FXML
     private Label resultado = new Label();
 
@@ -19,15 +20,20 @@ public class HelloController {
         try {
             LocalTime padrao = LocalTime.of(8, 0);
 
-            LocalTime entrada = LocalTime.of(Integer.parseInt(tfEntrada.getText().substring(0, 2)), Integer.parseInt(tfEntrada.getText().substring(2, 4)));
+            LocalTime entrada = LocalTime.of(Integer.parseInt(tfEntrada.getText().substring(0, 2)),
+                    Integer.parseInt(tfEntrada.getText().substring(2, 4)));
 
-            LocalTime intervalo = LocalTime.of(Integer.parseInt(tfIntervalo.getText().substring(0, 2)), Integer.parseInt(tfIntervalo.getText().substring(2, 4)));
+            LocalTime intervalo = LocalTime.of(Integer.parseInt(tfIntervalo.getText().substring(0, 2)),
+                    Integer.parseInt(tfIntervalo.getText().substring(2, 4)));
 
-            LocalTime retorno = LocalTime.of(Integer.parseInt(tfRetorno.getText().substring(0, 2)), Integer.parseInt(tfRetorno.getText().substring(2, 4)));
+            LocalTime retorno = LocalTime.of(Integer.parseInt(tfRetorno.getText().substring(0, 2)),
+                    Integer.parseInt(tfRetorno.getText().substring(2, 4)));
 
-            LocalTime extra = LocalTime.of(Integer.parseInt(tfQtdHorasExtras.getText().substring(0, 2)), Integer.parseInt(tfQtdHorasExtras.getText().substring(2, 4)));
+            LocalTime extra = LocalTime.of(Integer.parseInt(tfQtdHorasExtras.getText().substring(0, 2)),
+                    Integer.parseInt(tfQtdHorasExtras.getText().substring(2, 4)));
 
-            LocalTime compensacao = LocalTime.of(Integer.parseInt(tfQtdHorasCompensar.getText().substring(0, 2)), Integer.parseInt(tfQtdHorasCompensar.getText().substring(2, 4)));
+            LocalTime compensacao = LocalTime.of(Integer.parseInt(tfQtdHorasCompensar.getText().substring(0, 2)),
+                    Integer.parseInt(tfQtdHorasCompensar.getText().substring(2, 4)));
 
 
             LocalTime total = padrao.plusHours(entrada.getHour()).plusMinutes(entrada.getMinute());
@@ -45,22 +51,17 @@ public class HelloController {
 
                 resultado.setText(saida.toString());
 
-            }
-
-            else if(sExtra.equals("00:00") && sCompensacao != "00:00"){
+            } else if(sExtra.equals("00:00") && sCompensacao != "00:00"){
 
                 LocalTime compensar = saida.plusHours(compensacao.getHour()).plusMinutes(compensacao.getMinute());
                 resultado.setText(compensar.toString());
 
-            }
-
-            else {
+            } else {
 
                 LocalTime horaExtra = saida.minusHours(extra.getHour()).minusMinutes(extra.getMinute());
                 resultado.setText(horaExtra.toString());
 
             }
-
         } catch (StringIndexOutOfBoundsException n) {
 
             Button buttonOK = new Button();
