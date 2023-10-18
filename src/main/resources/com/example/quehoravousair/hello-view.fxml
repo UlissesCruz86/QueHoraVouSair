@@ -14,7 +14,8 @@
 
     <AnchorPane id="ArchoPane" prefHeight="387.0" prefWidth="489.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
         <children>
-            <Label text="Qtd. de horas diárias padrão: 08:00" layoutX="0" layoutY="3"/>
+            <Label text="Qtd. de horas diárias padrão: " layoutX="0" layoutY="3"/>
+            <TextField fx:id="tfHoraDiaria" maxWidth="50" layoutX="160" layoutY="0" text="0000"/>
             <Label text="Entrada: " layoutX="0" layoutY="47"/>
             <TextField fx:id="tfEntrada" maxWidth="50" layoutX="50" layoutY="44" text="0000"/>
             <Label text="Intervalo: " layoutX="0" layoutY="94"/>
@@ -28,7 +29,8 @@
             <Label text="Sua saída será: " layoutX="0" layoutY="268" style="-fx-font-size: 16px"/>
             <Label fx:id="resultado" style="-fx-font-weight: bold; -fx-font-size: 16px" layoutX="106" layoutY="268"/>
             <Label text="Digite somente os números" style="-fx-font-weight: bold" layoutX="0" layoutY="300"/>
-            <Button text="Resultado" layoutX="0" layoutY="335" onAction="#onHelloButtonClick"/>
+            <Button text="Limpar" layoutX="0" layoutY="335" onAction="#onClearButtonClick"/>
+            <Button text="Resultado" layoutX="60" layoutY="335" onAction="#onResultButtonClick"/>
         </children>
     </AnchorPane>
 </GridPane>

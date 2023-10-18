@@ -12,13 +12,14 @@ public class HelloController {
     private Label resultado = new Label();
 
     @FXML
-    private TextField tfEntrada, tfIntervalo, tfRetorno, tfQtdHorasExtras, tfQtdHorasCompensar;
+    private TextField tfHoraDiaria, tfEntrada, tfIntervalo, tfRetorno, tfQtdHorasExtras, tfQtdHorasCompensar;
 
     @FXML
-    protected void onHelloButtonClick() {
+    protected void onResultButtonClick() {
 
         try {
-            LocalTime padrao = LocalTime.of(8, 0);
+            LocalTime padrao = LocalTime.of(Integer.parseInt(tfHoraDiaria.getText().substring(0, 2)),
+                    Integer.parseInt(tfHoraDiaria.getText().substring(2, 4)));
 
             LocalTime entrada = LocalTime.of(Integer.parseInt(tfEntrada.getText().substring(0, 2)),
                     Integer.parseInt(tfEntrada.getText().substring(2, 4)));
@@ -47,11 +48,11 @@ public class HelloController {
             String sCompensacao = compensacao.toString();
 
 
-            if(sExtra.equals("00:00") && sCompensacao.equals("00:00")){
+            if (sExtra.equals("00:00") && sCompensacao.equals("00:00")) {
 
                 resultado.setText(saida.toString());
 
-            } else if(sExtra.equals("00:00") && sCompensacao != "00:00"){
+            } else if (sExtra.equals("00:00") && sCompensacao != "00:00") {
 
                 LocalTime compensar = saida.plusHours(compensacao.getHour()).plusMinutes(compensacao.getMinute());
                 resultado.setText(compensar.toString());
@@ -72,10 +73,20 @@ public class HelloController {
             alert.setTitle("Erro!");
             alert.setHeaderText("Não pode deixar o(s) campo(s) em branco.");
 
-            if(alert.showAndWait().get() == ButtonType.OK){
+            if (alert.showAndWait().get() == ButtonType.OK) {
                 stage = (Stage) buttonOK.getScene().getWindow();
                 stage.close();
             }
         }
+    }
+
+    @FXML
+    protected void onClearButtonClick() {
+        tfHoraDiaria.setText("0000");
+        tfEntrada.setText("0000");
+        tfIntervalo.setText("0000");
+        tfRetorno.setText("0000");
+        tfQtdHorasExtras.setText("0000");
+        tfQtdHorasCompensar.setText("0000");
     }
 }
