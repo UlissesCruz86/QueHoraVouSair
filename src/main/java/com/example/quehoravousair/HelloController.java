@@ -12,28 +12,26 @@ public class HelloController {
     private Label resultado = new Label();
 
     @FXML
-    private TextField tfEntrada, tfIntervalo, tfRetorno, tfQtdHorasExtras, tfQtdHorasCompensar;
+    private TextField tfPadrao, tfEntrada, tfIntervalo, tfRetorno, tfQtdHorasExtras, tfQtdHorasCompensar;
 
     @FXML
-    protected void onHelloButtonClick() {
+    protected void onButtonResult() {
+
+
 
         try {
-            LocalTime padrao = LocalTime.of(8, 0);
 
-            LocalTime entrada = LocalTime.of(Integer.parseInt(tfEntrada.getText().substring(0, 2)),
-                    Integer.parseInt(tfEntrada.getText().substring(2, 4)));
+            LocalTime padrao = LocalTime.of(Integer.parseInt(tfPadrao.getText().substring(0, 2)), Integer.parseInt(tfPadrao.getText().substring(2, 4)));
 
-            LocalTime intervalo = LocalTime.of(Integer.parseInt(tfIntervalo.getText().substring(0, 2)),
-                    Integer.parseInt(tfIntervalo.getText().substring(2, 4)));
+            LocalTime entrada = LocalTime.of(Integer.parseInt(tfEntrada.getText().substring(0, 2)), Integer.parseInt(tfEntrada.getText().substring(2, 4)));
 
-            LocalTime retorno = LocalTime.of(Integer.parseInt(tfRetorno.getText().substring(0, 2)),
-                    Integer.parseInt(tfRetorno.getText().substring(2, 4)));
+            LocalTime intervalo = LocalTime.of(Integer.parseInt(tfIntervalo.getText().substring(0, 2)), Integer.parseInt(tfIntervalo.getText().substring(2, 4)));
 
-            LocalTime extra = LocalTime.of(Integer.parseInt(tfQtdHorasExtras.getText().substring(0, 2)),
-                    Integer.parseInt(tfQtdHorasExtras.getText().substring(2, 4)));
+            LocalTime retorno = LocalTime.of(Integer.parseInt(tfRetorno.getText().substring(0, 2)), Integer.parseInt(tfRetorno.getText().substring(2, 4)));
 
-            LocalTime compensacao = LocalTime.of(Integer.parseInt(tfQtdHorasCompensar.getText().substring(0, 2)),
-                    Integer.parseInt(tfQtdHorasCompensar.getText().substring(2, 4)));
+            LocalTime extra = LocalTime.of(Integer.parseInt(tfQtdHorasExtras.getText().substring(0, 2)), Integer.parseInt(tfQtdHorasExtras.getText().substring(2, 4)));
+
+            LocalTime compensacao = LocalTime.of(Integer.parseInt(tfQtdHorasCompensar.getText().substring(0, 2)), Integer.parseInt(tfQtdHorasCompensar.getText().substring(2, 4)));
 
 
             LocalTime total = padrao.plusHours(entrada.getHour()).plusMinutes(entrada.getMinute());
@@ -47,11 +45,11 @@ public class HelloController {
             String sCompensacao = compensacao.toString();
 
 
-            if(sExtra.equals("00:00") && sCompensacao.equals("00:00")){
+            if (sExtra.equals("00:00") && sCompensacao.equals("00:00")) {
 
                 resultado.setText(saida.toString());
 
-            } else if(sExtra.equals("00:00") && sCompensacao != "00:00"){
+            } else if (sExtra.equals("00:00") && sCompensacao != "00:00") {
 
                 LocalTime compensar = saida.plusHours(compensacao.getHour()).plusMinutes(compensacao.getMinute());
                 resultado.setText(compensar.toString());
@@ -72,10 +70,22 @@ public class HelloController {
             alert.setTitle("Erro!");
             alert.setHeaderText("Não pode deixar o(s) campo(s) em branco.");
 
-            if(alert.showAndWait().get() == ButtonType.OK){
+            if (alert.showAndWait().get() == ButtonType.OK) {
                 stage = (Stage) buttonOK.getScene().getWindow();
                 stage.close();
             }
         }
+    }
+
+    @FXML
+    protected void onButtonClean() {
+
+        tfPadrao.setText("0800");
+        tfEntrada.setText("0000");
+        tfIntervalo.setText("0000");
+        tfRetorno.setText("0000");
+        tfQtdHorasExtras.setText("0000");
+        tfQtdHorasCompensar.setText("0000");
+        resultado.setText(null);
     }
 }
