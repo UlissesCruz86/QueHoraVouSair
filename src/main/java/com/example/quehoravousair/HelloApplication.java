@@ -15,7 +15,7 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 300, 400);
         stage.setTitle("Que hora eu vou sair?");
         stage.setScene(scene);
-        stage.getIcons().add(new Image("file:clock.png"));
+        stage.getIcons().add(new Image("file:.\\out\\artifacts\\QueHoraVouSair\\clock.png"));
         stage.setResizable(false);
         stage.show();
     }
